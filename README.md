@@ -5,6 +5,7 @@ This is a minesweeper for the md470 micro controller
 
 Its built in codelite as a "md470-startup" "type" project with Cross GCC compiling, and only tested with simServer.
 
+Its configured to have de graphical display connected to port E and the keyboard connected to port D, pin 8-15.
 
 Controlls:
 
