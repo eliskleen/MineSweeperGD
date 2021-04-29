@@ -2,6 +2,7 @@
 most scuffed MineSweeper I will ever build
 
 Controlls:
+
  2 = upp
  
  4 = left
