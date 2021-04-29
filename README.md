@@ -1,6 +1,7 @@
 # MineSweeperGD
 most scuffed MineSweeper I will ever build
-#Controlls
+
+Controlls:
  2 = upp
  4 = left
  6 = right
