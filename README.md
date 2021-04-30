@@ -1,7 +1,7 @@
 # MineSweeperGD
 most scuffed MineSweeper I will ever build
 
-This is a minesweeper for the md470 micro controller
+This is a minesweeper for the ST32F407 mocrocontroller
 
 Its built in codelite as a "md470-startup" "type" project with Cross GCC compiling, and only tested with simServer.
 
