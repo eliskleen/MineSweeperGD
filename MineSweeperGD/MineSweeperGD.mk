@@ -6,14 +6,14 @@
 ProjectName            :=MineSweeperGD
 ConfigurationName      :=Debug
 WorkspacePath          :=C:/Chalmers/Year1/LP4/MOP/MOP
-ProjectPath            :=C:/Chalmers/Year1/LP4/MOP/MOP/MineSweeperGD
+ProjectPath            :=C:/Chalmers/Year1/LP4/MOP/MOP/MineSweeperGD_git/MineSweeperGD
 IntermediateDirectory  :=$(ConfigurationName)
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=elisk
-Date                   :=29/04/2021
+Date                   :=06/05/2021
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -107,7 +107,7 @@ PreBuild:
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
-	$(CC) $(SourceSwitch) "C:/Chalmers/Year1/LP4/MOP/MOP/MineSweeperGD/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Chalmers/Year1/LP4/MOP/MOP/MineSweeperGD_git/MineSweeperGD/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(PreprocessSuffix): startup.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/startup.c$(PreprocessSuffix) startup.c
 

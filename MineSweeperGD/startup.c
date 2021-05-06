@@ -2,9 +2,8 @@
  * 	startup.c
  *
  */
-//#include <ctype.h>
-#include <chars_for_disp.h>
-//#include <systick.h>
+#include "chars_for_disp.h"
+#include "systick.h"
 __attribute__((naked)) __attribute__((section (".start_section")) )
 void startup ( void )
 {
@@ -514,7 +513,7 @@ int readColumn(void)
 	return 0;
 }
 
-
+/*
 // SYSTICK:
 
 
@@ -605,4 +604,4 @@ void delay( unsigned int count )
 	delay_count = count;
 	systick_flag = 0;
 	delay_1mikro();
-}
+}*/
