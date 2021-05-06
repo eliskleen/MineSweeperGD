@@ -121,8 +121,7 @@ int main(void)
 				hitCh = lastKey;
 				nSameKey = 0;
 			}
-			if(hitCh == noKeyReturn)
-				nSameKey = 0;
+		
 			if(hitCh != sameKeyReturn)
 				lastKey = hitCh;
 			switch(hitCh)
@@ -149,6 +148,8 @@ int main(void)
 			}
 			
 		}
+		if(hitCh == noKeyReturn)
+		nSameKey = 0;
 		if(hitCh == sameKeyReturn && (lastKey == 0x2 || lastKey == 0x4 || lastKey == 0x8 || lastKey == 0x6))
 			nSameKey++;
 		// do stuff depending on key_code
