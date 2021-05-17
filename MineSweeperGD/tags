@@ -1,17 +1,25 @@
-CHAR_X	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^#define CHAR_X  8$/;"	macro	line:1
-CHAR_Y	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^#define CHAR_Y 12$/;"	macro	line:2
-MAX_X	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^#define MAX_X 14$/;"	macro	line:3
-MAX_Y	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^#define MAX_Y 10$/;"	macro	line:4
-dispChar	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^typedef struct dispChar {$/;"	struct	line:6
-val	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^	char val;$/;"	member	line:7	struct:dispChar	access:public
-pattern	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^	char pattern[CHAR_Y][CHAR_X];$/;"	member	line:8	struct:dispChar	access:public
-DISPCHAR	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^typedef struct dispChar { 	char val; 	char pattern[CHAR_Y][CHAR_X];  } DISPCHAR; $/;"	typedef	line:9	typeref:struct:dispChar
-zero	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR zero = {'0',{{0,0,0,0,0,0,0,0}$/;"	variable	line:11
-one	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR one = {'1', {{0,0,0,0,0,0,0,0}$/;"	variable	line:23
-two	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR two = {'2', {{0,0,0,0,0,0,0,0}$/;"	variable	line:35
-three	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR three ={'3',{{0,0,0,0,0,0,0,0}$/;"	variable	line:47
-four	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR four = {'4',{{0,0,0,0,0,0,0,0}$/;"	variable	line:59
-doll	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR doll = {'$',{{0,0,0,0,1,0,0,0}$/;"	variable	line:71
-star	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR star = {'*',{{0,0,0,1,0,0,0,0}$/;"	variable	line:83
-arrow	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR arrow = {'^', {{0,0,0,0,0,0,0,0}$/;"	variable	line:95
-space	C:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD\chars_for_disp.h	/^DISPCHAR space = {' ', {{0,0,0,0,0,0,0,0}$/;"	variable	line:107
+TIM6_CR1	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_CR1 ((volatile unsigned short *) 0x40001000)$/;"	macro	line:1
+TIM6_DIER	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_DIER ((volatile unsigned short *) 0x4000100C)$/;"	macro	line:2
+TIM6_CNT	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_CNT ((volatile unsigned short *) 0x40001024)$/;"	macro	line:3
+TIM6_ARR	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_ARR ((volatile unsigned short *) 0x4000102C)$/;"	macro	line:4
+TIM6_PSC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_PSC ((volatile unsigned short *) 0x40001028)$/;"	macro	line:5
+TIM6_SR	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_SR ((volatile unsigned short *) 0x40001010)$/;"	macro	line:6
+UDIS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define UDIS (1<<1)$/;"	macro	line:7
+UIE	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define UIE (1<<0)$/;"	macro	line:8
+CEN	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define CEN (1<<0)$/;"	macro	line:9
+UIF	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define UIF (1<<0)$/;"	macro	line:10
+NVIC_TIM6_IRQ_BPOS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define NVIC_TIM6_IRQ_BPOS (1<<22)$/;"	macro	line:13
+NVIC_TIM6_ISER	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define NVIC_TIM6_ISER ((volatile unsigned int *) 0xE000E104)$/;"	macro	line:14
+NVIC_TIM6_ICER	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define NVIC_TIM6_ICER ((volatile unsigned int *) 0xE000E184)$/;"	macro	line:15
+SCB_VTOR	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define    SCB_VTOR            ((volatile unsigned int *)        0xE000ED08)$/;"	macro	line:17
+TIM6_IRQVEC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define    TIM6_IRQVEC         ((void (**)(void)) (*SCB_VTOR + 0x0118))$/;"	macro	line:18
+REALLOC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define REALLOC 0x2001C000$/;"	macro	line:19
+timer6_init	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_init();$/;"	prototype	line:21	signature:()	returns:void 
+timer6_interrupt	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_interrupt();$/;"	prototype	line:22	signature:()	returns:void 
+ticks	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^volatile int ticks;$/;"	variable	line:24
+seconds	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^volatile int seconds;$/;"	variable	line:25
+timer_running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^int timer_running;$/;"	variable	line:26
+timer6_init	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_init()$/;"	function	line:29	signature:()	returns:void 
+timer6_interrupt	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_interrupt()$/;"	function	line:47	signature:()	returns:void 
+toggle_timer_running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void toggle_timer_running()$/;"	function	line:58	signature:()	returns:void 
+set_running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void set_running(int r)$/;"	function	line:64	signature:(int r)	returns:void 

@@ -1,1 +1,1 @@
--IC:\Chalmers\Year1\LP4\MOP\MOP\MineSweeperGD_git\MineSweeperGD
+-IC:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD

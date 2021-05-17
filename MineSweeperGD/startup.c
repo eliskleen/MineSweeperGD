@@ -1,17 +1,24 @@
 /*
  * 	startup.c
  *
- */
+ *///__asm__ volatile(" LDR R0,=0x2001C000\n")
+//#include <ctype.h>
 #include "chars_for_disp.h"
 #include "systick.h"
+#include "timer6.h"
+#include "ASCIIDisp.h"
 __attribute__((naked)) __attribute__((section (".start_section")) )
 void startup ( void )
 {
-__asm__ volatile(" LDR R0,=0x2001C000\n");		/* set stack */
+__asm__ volatile(" LDR R0,=0x2001C000\n");    
 __asm__ volatile(" MOV SP,R0\n");
-__asm__ volatile(" BL main\n");					/* call main */
-__asm__ volatile(".L1: B .L1\n");				/* never return */
+//__asm__ volatile(" BL _crt_init\n");            
+__asm__ volatile(" BL main\n");                    
+//__asm__ volatile(" BL _crt_deinit\n");            
+__asm__ volatile(" B .\n");               
+__asm__ volatile(" .LTORG\n");                
 }
+
 #define GPIO_E 0x40021000
 #define GPIO_E_MODER ((volatile unsigned int *) (GPIO_E))
 #define GPIO_D 0x40020C00
@@ -23,6 +30,12 @@ __asm__ volatile(".L1: B .L1\n");				/* never return */
 #define GPIO_ODR_LOW ((volatile unsigned char *) (GPIO_D+0x14))
 #define GPIO_ODR_HIGH ((volatile unsigned char *) (GPIO_D+0x15))
 
+#define    SCB_VTOR            ((volatile unsigned int *)        0xE000ED08)
+
+
+//for ascii
+#define FLAGSOFFSET 12
+#define TIMEROFFSET 8
 
 void init_app();
 unsigned char readKey(void);
@@ -36,7 +49,7 @@ int currX = 0;
 int currY = 0;
 
 
-
+int placed_flaggs = 0;
 
 
 struct Positions 
@@ -64,12 +77,14 @@ struct Player
 
 struct Positions board[sizeX][sizeY];
 int running = 0;
+int gameover = 0;
 
 void gotoxy(int x, int y);
 void createBoard(struct Positions b[sizeX][sizeY]);
 void drawField();
 struct Player movePlayer(struct Player p, char moveCh);
 void drawPos(struct Positions p);
+void printToGD(char ch);
 void setCol(int col);
 int getColFromBombs(int nBombs);
 int * getNewXYFromCh(char ch);
@@ -84,7 +99,10 @@ void gameOver();
 void checkWin();
 int isBomb(struct Positions pos);
 int isFlag(struct Positions pos);
-
+void print_start_text_ascii();
+void print_flags(int f);
+void print_timer(int secs, int tenths);
+int play_again();
 
 
 
@@ -95,69 +113,95 @@ int (*isFlagPtr)(struct Positions);
 int main(void)
 {   
 	init_app();
-	graphic_clear_screen();
+	
 	isBombPtr = isBomb;
 	isFlagPtr = isFlag;
-	createBoard(&board);
-	int gameStarted = 0;
-	struct Player p;
-	p.x = 1;
-	p.y = 0;
-	char hitCh;
-	char lastKey;
-	int nSameKey = 0;
-	movePlayer(p, 0x06);
-	drawPos(board[0][0]);
 	running = 1;
+
+	//TODO: kolla vad som faktiskt behöver städas upp...
+	//kolla varför den hänger sig ibland, hallå?? vin?!
 	while(running)
 	{
-		checkWin();
-		hitCh = keyb_enhanced();
-		if( hitCh != noKeyReturn)
-		{
-			if(nSameKey >= sameKeyMax)
-			{
-				hitCh = lastKey;
-				nSameKey = 0;
-			}
+		graphic_clear_screen();
+		createBoard(&board);
+		int gameStarted = 0;	
+		struct Player p;
+		p.x = 0;
+		p.y = 0;
+		char hitCh;
+		char lastKey;
+		int nSameKey = 0;
+	
+		gotoxy(0,0);
+		printToGD(playerCh);
 		
-			if(hitCh != sameKeyReturn)
-				lastKey = hitCh;
-			switch(hitCh)
-			{
-				case 0xA: // open
-				 if(!gameStarted)
-				 {
-					makeFirstOpen(p);
-					gameStarted = 1;
-				 }
-				 else
-					openPos(p.x, p.y);
-				 break;
-				case 0xB: // place flag
-				 placeFlag(p);
-				 break;
-				case 0xE:
-				 showBombs();
-				 break;
-				default:	//move
-				 if(hitCh == 0x2 || hitCh == 0x4 || hitCh == 0x8 || hitCh == 0x6)
-					p = movePlayer(p, hitCh);
-				 break;
-			}
+		print_start_text_ascii();
+		print_flags(Bombs - placed_flaggs);
+		gameover = 0;
+		
+		while(!gameover)
+		{
 			
+			print_timer(seconds, ticks);
+			//TODO: lägg till att skriva ut tiden på ASCII!!
+			// skapa headerfil?
+			
+			
+			checkWin();
+			hitCh = keyb_enhanced();
+			if( hitCh != noKeyReturn)
+			{
+				if(nSameKey >= sameKeyMax)
+				{
+					hitCh = lastKey;
+					nSameKey = 0;
+				}
+				
+				if(hitCh != sameKeyReturn)
+					lastKey = hitCh;
+				switch(hitCh)
+				{
+					case 0xA: // open
+					if(!gameStarted)
+					{
+						makeFirstOpen(p);
+						gameStarted = 1;
+						toggle_timer_running();
+					}
+					else
+						openPos(p.x, p.y);
+					break;
+					case 0xB: // place flag
+					placeFlag(p);
+					print_flags(Bombs - placed_flaggs);
+					//TODO: skapa metod för att skrva ut hur många dlaggor är kvar att placera ut
+					// ta hand om negativa tal 
+					//borde kunna lösa det med NBCD kod om vi hat tvåsiffriga tal?
+					break;
+					default:	//move
+					if(hitCh == 0x2 || hitCh == 0x4 || hitCh == 0x8 || hitCh == 0x6)
+						p = movePlayer(p, hitCh);
+					break;
+				}
+				
+			}
+			if(hitCh == noKeyReturn)
+					nSameKey = 0;
+			if(hitCh == sameKeyReturn && (lastKey == 0x2 || lastKey == 0x4 || lastKey == 0x8 || lastKey == 0x6))
+				nSameKey++;
 		}
-		if(hitCh == noKeyReturn)
-		nSameKey = 0;
-		if(hitCh == sameKeyReturn && (lastKey == 0x2 || lastKey == 0x4 || lastKey == 0x8 || lastKey == 0x6))
-			nSameKey++;
-		// do stuff depending on key_code
+		
+		toggle_timer_running();
+		reset_timer();
+		running = play_again();
+		placed_flaggs = 0;
+		gameover = 0;
 	}
 	return 0;
 }
 void checkWin()
 {
-	int squaresToOpen = sizeX*sizeY - Bombs;
+	int squaresToOpen = 60; //sizeX*sizeY - Bombs;
 	int openedSquares = 0;
 	for(int x = 0; x < sizeX; x++)
 		for(int y = 0; y < sizeY; y++)
@@ -165,15 +209,17 @@ void checkWin()
 			if(board[x][y].opened && board[x][y].bomb == 0)
 				openedSquares++;
 		}
-	if(openedSquares == squaresToOpen)
-		running = 0;
+	if(openedSquares == sizeX*sizeY - Bombs)
+		gameover = 1;
 }
 void placeBombs(struct Player p)
 {
 	 // du kan göra en räknarkrets som du kan läsa av värdet på!!!
 	int placedBombs = 0;
+	start_rand();
 	while(placedBombs < Bombs)
 	{
+		int tst = get_rand_val();
 		int rx = get_rand_val() % sizeX;
 		int ry = get_rand_val() % sizeY;
 		if(board[rx][ry].bomb == 0 && (rx != p.x && ry != p.y))
@@ -182,6 +228,7 @@ void placeBombs(struct Player p)
 			placedBombs++;
 		}
 	}
+	end_rand();
 	for(int i = 0; i<sizeX; i++)
 		for(int j = 0; j < sizeY; j++)
 			board[i][j].numberOfBombs = countBombOrFlag(i, j, isBombPtr);
@@ -207,12 +254,13 @@ void placeFlag(struct Player p)
 		return;
 	board[p.x][p.y].flagged = (board[p.x][p.y].flagged + 1) % 2;
 	p.placedFlaggs = board[p.x][p.y].flagged ? p.placedFlaggs + 1 : p.placedFlaggs -1;
+	placed_flaggs = p.placedFlaggs == 1 ? placed_flaggs + 1 : placed_flaggs - 1;
 	drawPos(board[p.x][p.y]);
 }
 void gameOver()
 {
 	showBombs();
-	running = 0;
+	gameover = 1;
 }
 
 void openPos(int x, int y)
@@ -351,6 +399,10 @@ void createBoard(struct Positions b[sizeX][sizeY])
 		{
 			b[x][y].x = x;
 			b[x][y].y = y;
+			b[x][y].numberOfBombs =  0;
+			b[x][y].flagged = 0;
+			b[x][y].opened = 0;
+			b[x][y].bomb = 0;
 		} 
 	}
 }
@@ -389,7 +441,7 @@ void printToGD(char ch)
 		print_ch = star;
 		break;
 		case flagCh:
-		print_ch = arrow;
+		print_ch = flag;
 		break;
 		default:
 		print_ch = space;
@@ -440,9 +492,12 @@ void init_app(void)
 	*GPIO_OTYPER = 0xFFAA0000;
 	*GPIO_PUPDR = 0x0F0000;
 	*GPIO_E_MODER = 0x55555555;
+	*SCB_VTOR = REALLOC;
 	graphic_initialize();
 	sysTick_init();
-	start_rand();
+	timer6_init();
+	toggle_timer_running();
+	ascii_init();
 }
 
 #define waitState 1
@@ -513,95 +568,60 @@ int readColumn(void)
 	return 0;
 }
 
-/*
-// SYSTICK:
-
-
-#define STK 0xE000E010
-#define STK_CTRL  ((volatile int *)(STK))
-#define STK_LOAD  ((volatile int *)(STK+0x04))
-#define STK_VAL   ((volatile int *)(STK+0x08))
-#define STK_CALIB ((volatile int *)(STK+0x0C))
-#define LOAD_MAX 0xFFFFFF
-
-
-#define SCB_VTOR ((volatile unsigned long *)0xE000ED08)
-#define REALLOC 0x2001C000
-
-static volatile int systick_flag;
-static volatile int delay_count;
-
-static volatile int counting;
-static volatile int used_for_rand;
-
-
-void systick_irq_handler( void );
-
-void start_rand()
+//ascii
+void print_start_text_ascii()
 {
-	if(counting) return; // kan inte göra båda samtidigt
-	used_for_rand = 1;
-	*STK_CTRL = 0;
-	*STK_LOAD = LOAD_MAX;
-	*STK_VAL = 0;
-	*STK_CTRL = 7;
-}
-int get_rand_val()
-{
-	if(used_for_rand)
-		return *STK_VAL;
-	else return 0;
-}
-void end_rand()
-{
-	*STK_CTRL = 0;
-	used_for_rand = 0;
+	ascii_gotoxy(1,1);
+	char upper[] = "Flags left: ";
+	char lower[] = "Timer: 		";
+	ascii_write_string(upper);
+	ascii_gotoxy(1,2);
+	ascii_write_string(lower);
 }
 
-void sysTick_init()
+void print_flags(int f)
 {
-	*SCB_VTOR = REALLOC;
-	*((void (**)(void) ) 0x2001C03C) = &systick_irq_handler;
+	if(f > 0)
+	{
+		ascii_gotoxy(FLAGSOFFSET, 1);
+		char clear[] = "  ";
+		ascii_write_string(clear);
+	
+		ascii_gotoxy(FLAGSOFFSET, 1);
+		ascii_write_number(f);	
+	}
+	else {
+		ascii_gotoxy(FLAGSOFFSET, 1);
+		ascii_write_char(45); // - = 45
+		f *= (-1);
+		ascii_write_number(f);
+	}
+	
 }
 
-void delay_1mikro( void )
+void print_timer(int secs, int tenths)
 {
-	*STK_CTRL = 0;
-	*STK_LOAD = (168 - 1);
-	*STK_VAL = 0;
-	*STK_CTRL = 7;
+	ascii_gotoxy(TIMEROFFSET, 2);
+	ascii_write_number(secs);
+	ascii_write_char(46); // . = 46
+	ascii_write_number(tenths);
 }
 
-void systick_irq_handler( void )
+int play_again()
 {
-	if(used_for_rand) systick_irq_handler_rand();
-	else systick_irq_handler_counting();
+	char upper[] = "Play again? yes -> D";
+	char lower[] = "yes -> D, no -> anything";
+	ascii_gotoxy(1,1);
+	ascii_write_string(upper);
+	//ascii_gotoxy(1,2);
+	//ascii_write_string(lower);
+	char hitch = 0xFF;
+	while(1)
+	{
+		hitch = keyb_enhanced();
+		if(hitch != sameKeyReturn && hitch != noKeyReturn)
+			break;
+	}
+	return hitch == 0xD;
+	
 }
-
-void systick_irq_handler_counting( void )
-{
-	*STK_CTRL = 0;
-	delay_count -- ;
-	if( delay_count > 0 ) delay_1mikro();
-	else 
-		{
-			systick_flag = 1;
-			counting = 0;
-		}
-}
-void systick_irq_handler_rand( void )
-{
-	*STK_CTRL = 0;
-	*STK_LOAD = LOAD_MAX;
-	*STK_VAL = 0;
-	*STK_CTRL = 7;
-}
-void delay( unsigned int count )
-{
-	if(used_for_rand) return; // kan inte göra båda samtidigt
-	counting = 1;
-	if( count == 0 ) return;
-	delay_count = count;
-	systick_flag = 0;
-	delay_1mikro();
-}*/

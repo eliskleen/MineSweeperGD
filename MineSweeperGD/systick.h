@@ -4,7 +4,7 @@
 #define STK_LOAD  ((volatile int *)(STK+0x04))
 #define STK_VAL   ((volatile int *)(STK+0x08))
 #define STK_CALIB ((volatile int *)(STK+0x0C))
-#define LOAD_MAX 0xFFFFFF
+#define LOAD_MAX 0xFF
 
 
 #define SCB_VTOR ((volatile unsigned long *)0xE000ED08)
@@ -42,7 +42,7 @@ void end_rand()
 
 void sysTick_init()
 {
-	*SCB_VTOR = REALLOC;
+	//*SCB_VTOR = REALLOC;
 	*((void (**)(void) ) 0x2001C03C) = &systick_irq_handler;
 }
 
