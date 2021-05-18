@@ -1,10 +1,10 @@
-Debug/startup.c.o: startup.c chars_for_disp.h systick.h timer6.h \
- ASCIIDisp.h
+Debug/startup.c.o: startup.c game_logic_declarations.h timer6.h keypad.h \
+ gpio.h
 
-chars_for_disp.h:
-
-systick.h:
+game_logic_declarations.h:
 
 timer6.h:
 
-ASCIIDisp.h:
+keypad.h:
+
+gpio.h:

@@ -1,25 +1,42 @@
-TIM6_CR1	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_CR1 ((volatile unsigned short *) 0x40001000)$/;"	macro	line:1
-TIM6_DIER	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_DIER ((volatile unsigned short *) 0x4000100C)$/;"	macro	line:2
-TIM6_CNT	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_CNT ((volatile unsigned short *) 0x40001024)$/;"	macro	line:3
-TIM6_ARR	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_ARR ((volatile unsigned short *) 0x4000102C)$/;"	macro	line:4
-TIM6_PSC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_PSC ((volatile unsigned short *) 0x40001028)$/;"	macro	line:5
-TIM6_SR	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define TIM6_SR ((volatile unsigned short *) 0x40001010)$/;"	macro	line:6
-UDIS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define UDIS (1<<1)$/;"	macro	line:7
-UIE	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define UIE (1<<0)$/;"	macro	line:8
-CEN	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define CEN (1<<0)$/;"	macro	line:9
-UIF	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define UIF (1<<0)$/;"	macro	line:10
-NVIC_TIM6_IRQ_BPOS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define NVIC_TIM6_IRQ_BPOS (1<<22)$/;"	macro	line:13
-NVIC_TIM6_ISER	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define NVIC_TIM6_ISER ((volatile unsigned int *) 0xE000E104)$/;"	macro	line:14
-NVIC_TIM6_ICER	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define NVIC_TIM6_ICER ((volatile unsigned int *) 0xE000E184)$/;"	macro	line:15
-SCB_VTOR	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define    SCB_VTOR            ((volatile unsigned int *)        0xE000ED08)$/;"	macro	line:17
-TIM6_IRQVEC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define    TIM6_IRQVEC         ((void (**)(void)) (*SCB_VTOR + 0x0118))$/;"	macro	line:18
-REALLOC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^#define REALLOC 0x2001C000$/;"	macro	line:19
-timer6_init	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_init();$/;"	prototype	line:21	signature:()	returns:void 
-timer6_interrupt	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_interrupt();$/;"	prototype	line:22	signature:()	returns:void 
-ticks	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^volatile int ticks;$/;"	variable	line:24
-seconds	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^volatile int seconds;$/;"	variable	line:25
-timer_running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^int timer_running;$/;"	variable	line:26
-timer6_init	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_init()$/;"	function	line:29	signature:()	returns:void 
-timer6_interrupt	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void timer6_interrupt()$/;"	function	line:47	signature:()	returns:void 
-toggle_timer_running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void toggle_timer_running()$/;"	function	line:58	signature:()	returns:void 
-set_running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\timer6.h	/^void set_running(int r)$/;"	function	line:64	signature:(int r)	returns:void 
+playerCh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define playerCh '$'$/;"	macro	line:3
+bombCh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define bombCh '*'$/;"	macro	line:4
+flagCh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define flagCh '^'$/;"	macro	line:5
+FLAGSOFFSET	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define FLAGSOFFSET 12$/;"	macro	line:7
+TIMEROFFSET	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define TIMEROFFSET 8$/;"	macro	line:8
+B_E	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_E 0x40 \/* Enable-signal *\/$/;"	macro	line:13
+B_SELECT	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_SELECT 4 \/* Välj ASCII-display *\/$/;"	macro	line:14
+B_RW	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_RW 2 \/* 0=Write, 1=Read *\/$/;"	macro	line:15
+B_RS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_RS 1 \/* 0=Control, 1=Data *\/$/;"	macro	line:16
+STATUS_FLAG	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define STATUS_FLAG 0x80$/;"	macro	line:18
+PORT_BASE	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define PORT_BASE    0x40021000$/;"	macro	line:20
+portModer	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portModer    ((volatile unsigned int *)(PORT_BASE))$/;"	macro	line:21
+portOtyper	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOtyper   ((volatile unsigned short *) (PORT_BASE+0x4))$/;"	macro	line:22
+portPupdr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portPupdr    ((volatile unsigned int *) (PORT_BASE+0xC))$/;"	macro	line:23
+portOspeeder	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOspeeder ((volatile unsigned int *)(PORT_BASE+0x08))$/;"	macro	line:24
+portIdrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portIdrLow   ((volatile unsigned char *) (PORT_BASE+0x10))$/;"	macro	line:25
+portIdrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portIdrHigh  ((volatile unsigned char *) (PORT_BASE+0x11))$/;"	macro	line:26
+portOdrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOdrLow   ((volatile unsigned char *) (PORT_BASE+0x14))$/;"	macro	line:27
+portOdrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOdrHigh  ((volatile unsigned char *) (PORT_BASE+0x15))$/;"	macro	line:28
+ascii_ctrl_bit_set	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_ctrl_bit_set( char x );$/;"	prototype	line:31	signature:( char x )	returns:void 
+ascii_ctrl_bit_clear	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_ctrl_bit_clear( char x );$/;"	prototype	line:32	signature:( char x )	returns:void 
+delay_250ns	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void delay_250ns();$/;"	prototype	line:33	signature:()	returns:void 
+delay_milli	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void delay_milli(unsigned int ms);$/;"	prototype	line:34	signature:(unsigned int ms)	returns:void 
+delay_micro	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void delay_micro(unsigned int us);$/;"	prototype	line:35	signature:(unsigned int us)	returns:void 
+ascii_write_controller	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_controller(char cmd);$/;"	prototype	line:36	signature:(char cmd)	returns:void 
+ascii_write_command	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_command(char cmd);$/;"	prototype	line:37	signature:(char cmd)	returns:void 
+ascii_write_data	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_data(char cmd);$/;"	prototype	line:38	signature:(char cmd)	returns:void 
+ascii_read_controller	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^unsigned char ascii_read_controller();$/;"	prototype	line:39	signature:()	returns:unsigned char 
+ascii_read_status	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^unsigned char ascii_read_status();$/;"	prototype	line:40	signature:()	returns:unsigned char 
+ascii_read_data	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^unsigned char ascii_read_data();$/;"	prototype	line:41	signature:()	returns:unsigned char 
+ascii_command	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_command(char cmd);$/;"	prototype	line:42	signature:(char cmd)	returns:void 
+ascii_write_char	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_char(char ch);$/;"	prototype	line:43	signature:(char ch)	returns:void 
+ascii_write_string	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_string(char * p);$/;"	prototype	line:45	signature:(char * p)	returns:void 
+init_disp	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void init_disp();$/;"	prototype	line:49	signature:()	returns:void 
+printToGD	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void printToGD(int x, int y,char ch);$/;"	prototype	line:50	signature:(int x, int y,char ch)	returns:void 
+print_start_text_ascii	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void print_start_text_ascii();$/;"	prototype	line:51	signature:()	returns:void 
+print_flags	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void print_flags(int f);$/;"	prototype	line:52	signature:(int f)	returns:void 
+print_timer	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void print_timer(int secs, int tenths);$/;"	prototype	line:53	signature:(int secs, int tenths)	returns:void 
+graphic_initialize	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_initialize(void);$/;"	prototype	line:54	signature:(void)	returns:void 
+graphic_clear_screen	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_clear_screen(void); $/;"	prototype	line:55	signature:(void)	returns:void 
+graphic_pixel_set	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_pixel_set(int x, int y);$/;"	prototype	line:56	signature:(int x, int y)	returns:void 
+graphic_pixel_clear	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_pixel_clear(int x, int y);/;"	prototype	line:57	signature:(int x, int y)	returns:void 

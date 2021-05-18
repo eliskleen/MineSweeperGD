@@ -1,38 +1,132 @@
+#ifndef GRAPGIC_DISP_DEC
+	#define GRAPGIC_DISP_DEC
+	#include "graphic_disp_declarations.h"
+#endif
+#ifndef CHARS_FOR_DISP
+#define CHARS_FOR_DISP
+#include "chars_for_disp.h"
+#endif
+
 #include "systick.h"
-/* Masker för kontrollbitar */
-#define B_E 0x40 /* Enable-signal */
-#define B_SELECT 4 /* Välj ASCII-display */
-#define B_RW 2 /* 0=Write, 1=Read */
-#define B_RS 1 /* 0=Control, 1=Data */
+void init_disp(int use_ascii)
+{
+	if(use_ascii)
+		ascii_init();
+	else
+		*portModer = 0x55555555;
+}
 
-#define STATUS_FLAG 0x80
+void printToGD(int x, int y,char ch)
+{
+	DISPCHAR print_ch;
+	switch(ch)
+	{
+		case '0':
+		print_ch = zero;
+		break;
+		case '1':
+		print_ch = one;
+		break;
+		case '2':
+		print_ch = two;
+		break;
+		case '3':
+		print_ch = three;
+		break;
+		case '4':
+		print_ch = four;
+		break;
+		case '$':
+		print_ch = doll;
+		break;
+		case bombCh:
+		print_ch = star;
+		break;
+		case flagCh:
+		print_ch = flag;
+		break;
+		default:
+		print_ch = space;
+		break;
+	}
+	printNumAt(x*CHAR_X, y*CHAR_Y, print_ch);
+}
 
-#define PORT_BASE    0x40021000
-#define portModer    ((volatile unsigned int *)(PORT_BASE))
-#define portOtyper   ((volatile unsigned short *) (PORT_BASE+0x4))
-#define portPupdr    ((volatile unsigned int *) (PORT_BASE+0xC))
-#define portOspeeder ((volatile unsigned int *)(PORT_BASE+0x08))
-#define portIdrLow   ((volatile unsigned char *) (PORT_BASE+0x10))
-#define portIdrHigh  ((volatile unsigned char *) (PORT_BASE+0x11))
-#define portOdrLow   ((volatile unsigned char *) (PORT_BASE+0x14))
-#define portOdrHigh  ((volatile unsigned char *) (PORT_BASE+0x15))
+void printNumAt(int x, int y, DISPCHAR ch)
+{
+	for(int i = 0; i < CHAR_Y; i++)
+		for(int j = 0; j < CHAR_X; j++)
+		if(ch.pattern[i][j])
+			graphic_pixel_set(j+x, i+y);
+		else
+			graphic_pixel_clear(j+x, i+y);
+}
 
 
-void ascii_ctrl_bit_set( char x );
-void ascii_ctrl_bit_clear( char x );
-void delay_250ns();
-void delay_milli(unsigned int ms);
-void delay_micro(unsigned int us);
-void ascii_write_controller(char cmd);
-void ascii_write_command(char cmd);
-void ascii_write_data(char cmd);
-unsigned char ascii_read_controller();
-unsigned char ascii_read_status();
-unsigned char ascii_read_data();
-void ascii_command(char cmd);
-void ascii_write_char(char ch);
+__attribute__((naked))
+void graphic_initialize(void)
+{
+	__asm volatile(" .HWORD 0xDFF0\n");
+	__asm volatile(" BX LR\n");
+}
+__attribute__((naked))
+void graphic_clear_screen(void)
+{
+	__asm volatile(" .HWORD 0xDFF1\n");
+	__asm volatile(" BX LR\n");
+}
+__attribute__((naked))
+void graphic_pixel_set(int x, int y)
+{
+	__asm volatile(" .HWORD 0xDFF2\n");
+	__asm volatile(" BX LR\n");
+}
+__attribute__((naked))
+void graphic_pixel_clear(int x, int y)
+{
+	__asm volatile(" .HWORD 0xDFF3\n");
+	__asm volatile(" BX LR\n");
+}
 
-void ascii_write_string(char * p);
+
+//ascii
+void print_start_text_ascii()
+{
+	ascii_gotoxy(1,1);
+	char upper[] = "Flags left: ";
+	char lower[] = "Timer: 		";
+	ascii_write_string(upper);
+	ascii_gotoxy(1,2);
+	ascii_write_string(lower);
+}
+
+void print_flags(int f)
+{
+	if(f > 0)
+	{
+		ascii_gotoxy(FLAGSOFFSET, 1);
+		char clear[] = "  ";
+		ascii_write_string(clear);
+	
+		ascii_gotoxy(FLAGSOFFSET, 1);
+		ascii_write_number(f);	
+	}
+	else {
+		ascii_gotoxy(FLAGSOFFSET, 1);
+		ascii_write_char(45); // - = 45
+		f *= (-1);
+		ascii_write_number(f);
+	}
+	
+}
+
+void print_timer(int secs, int tenths)
+{
+	ascii_gotoxy(TIMEROFFSET, 2);
+	ascii_write_number(secs);
+	ascii_write_char(46); // . = 46
+	ascii_write_number(tenths);
+}
 
 
 void ascii_init()

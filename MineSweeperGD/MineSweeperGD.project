@@ -20,6 +20,12 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="graphic_disp_declarations.h"/>
+    <File Name="game_logic_declarations.h"/>
+    <File Name="graphic_disp.c"/>
+    <File Name="game_logic.c"/>
+    <File Name="gpio.h"/>
+    <File Name="keypad.h"/>
     <File Name="ASCIIDisp.h"/>
     <File Name="timer6.h"/>
     <File Name="systick.h"/>
