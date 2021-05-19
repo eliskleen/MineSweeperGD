@@ -17,7 +17,7 @@ struct Player
 #define bombCh '*'
 #define flagCh '^'
 #define Bombs 10
-#define sameKeyMax 15
+#define sameKeyMax 30
 
 
 void gotoxy(int x, int y);

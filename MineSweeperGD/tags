@@ -1,42 +1,16 @@
-playerCh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define playerCh '$'$/;"	macro	line:3
-bombCh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define bombCh '*'$/;"	macro	line:4
-flagCh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define flagCh '^'$/;"	macro	line:5
-FLAGSOFFSET	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define FLAGSOFFSET 12$/;"	macro	line:7
-TIMEROFFSET	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define TIMEROFFSET 8$/;"	macro	line:8
-B_E	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_E 0x40 \/* Enable-signal *\/$/;"	macro	line:13
-B_SELECT	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_SELECT 4 \/* Välj ASCII-display *\/$/;"	macro	line:14
-B_RW	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_RW 2 \/* 0=Write, 1=Read *\/$/;"	macro	line:15
-B_RS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define B_RS 1 \/* 0=Control, 1=Data *\/$/;"	macro	line:16
-STATUS_FLAG	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define STATUS_FLAG 0x80$/;"	macro	line:18
-PORT_BASE	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define PORT_BASE    0x40021000$/;"	macro	line:20
-portModer	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portModer    ((volatile unsigned int *)(PORT_BASE))$/;"	macro	line:21
-portOtyper	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOtyper   ((volatile unsigned short *) (PORT_BASE+0x4))$/;"	macro	line:22
-portPupdr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portPupdr    ((volatile unsigned int *) (PORT_BASE+0xC))$/;"	macro	line:23
-portOspeeder	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOspeeder ((volatile unsigned int *)(PORT_BASE+0x08))$/;"	macro	line:24
-portIdrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portIdrLow   ((volatile unsigned char *) (PORT_BASE+0x10))$/;"	macro	line:25
-portIdrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portIdrHigh  ((volatile unsigned char *) (PORT_BASE+0x11))$/;"	macro	line:26
-portOdrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOdrLow   ((volatile unsigned char *) (PORT_BASE+0x14))$/;"	macro	line:27
-portOdrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^#define portOdrHigh  ((volatile unsigned char *) (PORT_BASE+0x15))$/;"	macro	line:28
-ascii_ctrl_bit_set	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_ctrl_bit_set( char x );$/;"	prototype	line:31	signature:( char x )	returns:void 
-ascii_ctrl_bit_clear	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_ctrl_bit_clear( char x );$/;"	prototype	line:32	signature:( char x )	returns:void 
-delay_250ns	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void delay_250ns();$/;"	prototype	line:33	signature:()	returns:void 
-delay_milli	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void delay_milli(unsigned int ms);$/;"	prototype	line:34	signature:(unsigned int ms)	returns:void 
-delay_micro	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void delay_micro(unsigned int us);$/;"	prototype	line:35	signature:(unsigned int us)	returns:void 
-ascii_write_controller	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_controller(char cmd);$/;"	prototype	line:36	signature:(char cmd)	returns:void 
-ascii_write_command	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_command(char cmd);$/;"	prototype	line:37	signature:(char cmd)	returns:void 
-ascii_write_data	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_data(char cmd);$/;"	prototype	line:38	signature:(char cmd)	returns:void 
-ascii_read_controller	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^unsigned char ascii_read_controller();$/;"	prototype	line:39	signature:()	returns:unsigned char 
-ascii_read_status	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^unsigned char ascii_read_status();$/;"	prototype	line:40	signature:()	returns:unsigned char 
-ascii_read_data	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^unsigned char ascii_read_data();$/;"	prototype	line:41	signature:()	returns:unsigned char 
-ascii_command	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_command(char cmd);$/;"	prototype	line:42	signature:(char cmd)	returns:void 
-ascii_write_char	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_char(char ch);$/;"	prototype	line:43	signature:(char ch)	returns:void 
-ascii_write_string	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void ascii_write_string(char * p);$/;"	prototype	line:45	signature:(char * p)	returns:void 
-init_disp	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void init_disp();$/;"	prototype	line:49	signature:()	returns:void 
-printToGD	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void printToGD(int x, int y,char ch);$/;"	prototype	line:50	signature:(int x, int y,char ch)	returns:void 
-print_start_text_ascii	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void print_start_text_ascii();$/;"	prototype	line:51	signature:()	returns:void 
-print_flags	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void print_flags(int f);$/;"	prototype	line:52	signature:(int f)	returns:void 
-print_timer	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void print_timer(int secs, int tenths);$/;"	prototype	line:53	signature:(int secs, int tenths)	returns:void 
-graphic_initialize	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_initialize(void);$/;"	prototype	line:54	signature:(void)	returns:void 
-graphic_clear_screen	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_clear_screen(void); $/;"	prototype	line:55	signature:(void)	returns:void 
-graphic_pixel_set	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_pixel_set(int x, int y);$/;"	prototype	line:56	signature:(int x, int y)	returns:void 
-graphic_pixel_clear	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\graphic_disp_declarations.h	/^void graphic_pixel_clear(int x, int y);/;"	prototype	line:57	signature:(int x, int y)	returns:void 
+uint32_t	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef unsigned int uint32_t; /;"	typedef	line:1
+uint8_t	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef unsigned char uint8_t; $/;"	typedef	line:2
+tag_gpio	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef volatile struct tag_gpio {$/;"	struct	line:3
+moder	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t moder;$/;"	member	line:4	struct:tag_gpio	access:public
+otyper	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t otyper;$/;"	member	line:5	struct:tag_gpio	access:public
+ospeedr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t ospeedr;$/;"	member	line:6	struct:tag_gpio	access:public
+pupdr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t pupdr;$/;"	member	line:7	struct:tag_gpio	access:public
+idr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t idr;$/;"	member	line:9	union:tag_gpio::__anon1	access:public
+idrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t idrLow;$/;"	member	line:11	struct:tag_gpio::__anon1::__anon2	access:public
+idrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t idrHigh;$/;"	member	line:12	struct:tag_gpio::__anon1::__anon2	access:public
+reserved	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		short reserved;$/;"	member	line:13	struct:tag_gpio::__anon1::__anon2	access:public
+odr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t odr;$/;"	member	line:17	union:tag_gpio::__anon3	access:public
+odrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t odrLow;$/;"	member	line:19	struct:tag_gpio::__anon3::__anon4	access:public
+odrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t odrHigh;$/;"	member	line:20	struct:tag_gpio::__anon3::__anon4	access:public
+reserved2	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		short reserved2;$/;"	member	line:21	struct:tag_gpio::__anon3::__anon4	access:public
+GPIO	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef volatile struct tag_gpio { 	uint32_t moder; 	uint32_t otyper; 	uint32_t ospeedr; 	uint32_t pupdr; 	union { 	uint32_t idr; 	struct { 		uint8_t idrLow; 		uint8_t idrHigh; 		short reserved; 		}; 	}; 	union { 	uint32_t odr; 	struct { 		uint8_t odrLow; 		uint8_t odrHigh; 		short reserved2; 		}; 	}; 	 } GPIO; $/;"	typedef	line:25	typeref:struct:tag_gpio

@@ -62,8 +62,8 @@ int main(void)
 					nSameKey = 0;
 				}
 				
-				if(hitCh != sameKeyReturn)// vi har en ny knapp, spara i lastkey
-					lastKey = hitCh;
+				if(hitCh != sameKeyReturn)// vi har en ny knapp, spara i lastkey ska inte detta bara göras
+					lastKey = hitCh; // när vi har en move??
 				switch(hitCh)
 				{
 					case 0xA: // open
@@ -81,8 +81,8 @@ int main(void)
 					print_flags(Bombs - placed_flaggs);
 					break;
 					default:	//move
-					if(hitCh == 0x2 || hitCh == 0x4 || hitCh == 0x8 || hitCh == 0x6)
-						p = movePlayer(p, hitCh);
+					//if(hitCh == 0x2 || hitCh == 0x4 || hitCh == 0x8 || hitCh == 0x6)// TODO: skapa lista och contains typ? samt diagonal movement
+					p = movePlayer(p, hitCh);
 					break;
 				}
 			}

@@ -29,7 +29,6 @@ void placeBombs(struct Player p)
 	start_rand();
 	while(placedBombs < Bombs)
 	{
-		int tst = get_rand_val();
 		int rx = get_rand_val() % sizeX;
 		int ry = get_rand_val() % sizeY;
 		if(board[rx][ry].bomb == 0 && (rx != p.x && ry != p.y))
@@ -128,7 +127,7 @@ int isFlag(struct Positions pos)
 
 struct Player movePlayer(struct Player p, char moveCh)
 {
-	
+	//TODO: diagonal movement, kan göra i två steg för att fixa valid move problemet
 	drawPos(board[p.x][p.y]);
 	int *newXY;
 	newXY = getNewXYFromCh(moveCh);
@@ -172,7 +171,7 @@ void drawPos(struct Positions p)
 		printToGD(currX, currY, flagCh);
 	}
 	else
-		printToGD(currX, currY, " ");
+		printToGD(currX, currY, ' ');
 		
 }
 int * getNewXYFromCh(char ch)

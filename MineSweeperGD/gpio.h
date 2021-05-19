@@ -23,5 +23,7 @@ typedef volatile struct tag_gpio {
 	};
 	
 } GPIO;
-#define GPIO_D (*((volatile GPIO*) 0x40020c00))
-#define GPIO_E (*((volatile GPIO*) 0x40021000))
+/*
+ * Port D: 0x40020C00
+ * Port E: 0x40021000
+ */
