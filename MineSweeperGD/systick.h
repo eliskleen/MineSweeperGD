@@ -80,7 +80,7 @@ void systick_irq_handler_rand( void )
 }
 void delay( unsigned int count )
 {
-	if(used_for_rand) return; // kan inte göra båda samtidigt
+	if(used_for_rand) return;
 	counting = 1;
 	if( count == 0 ) return;
 	delay_count = count;

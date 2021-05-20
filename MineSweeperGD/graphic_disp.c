@@ -3,8 +3,8 @@
 	#include "graphic_disp_declarations.h"
 #endif
 #ifndef CHARS_FOR_DISP
-#define CHARS_FOR_DISP
-#include "chars_for_disp.h"
+	#define CHARS_FOR_DISP
+	#include "chars_for_disp.h"
 #endif
 
 #include "systick.h"
@@ -16,7 +16,7 @@ void init_disp(int use_ascii)
 		*portModer = 0x55555555;
 }
 
-void printToGD(int x, int y,char ch)
+void print_to_gd(int x, int y,char ch)
 {
 	DISPCHAR print_ch;
 	switch(ch)
@@ -49,10 +49,10 @@ void printToGD(int x, int y,char ch)
 		print_ch = space;
 		break;
 	}
-	printNumAt(x*CHAR_X, y*CHAR_Y, print_ch);
+	print_num_at(x*CHAR_X, y*CHAR_Y, print_ch);
 }
 
-void printNumAt(int x, int y, DISPCHAR ch)
+void print_num_at(int x, int y, DISPCHAR ch)
 {
 	for(int i = 0; i < CHAR_Y; i++)
 		for(int j = 0; j < CHAR_X; j++)
@@ -94,15 +94,22 @@ void print_start_text_ascii()
 {
 	ascii_gotoxy(1,1);
 	char upper[] = "Flags left: ";
-	char lower[] = "Timer: 		";
+	char lower[] = "Time: 		";
 	ascii_write_string(upper);
 	ascii_gotoxy(1,2);
 	ascii_write_string(lower);
 }
 
+void print_win_loose_msg(int won)
+{
+	ascii_gotoxy(1,1);
+	char * str = won != 0 ? "Congrats!! Well played <3" : "Thats to bad...";
+	ascii_write_string(str);
+}
+
 void print_flags(int f)
 {
-	if(f > 0)
+	if(f >= 0)
 	{
 		ascii_gotoxy(FLAGSOFFSET, 1);
 		char clear[] = "  ";
@@ -237,7 +244,6 @@ void ascii_ctrl_bit_clear( char x )
 
 void delay_250ns()
 {
-	
 	//ett tick från klockan var 6:e nanosekund 
 	//för att få 250 ns behöver vi vänta 6*42 ns
 	*STK_CTRL = 0;

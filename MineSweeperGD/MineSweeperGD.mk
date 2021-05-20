@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=elisk
-Date                   :=18/05/2021
+Date                   :=20/05/2021
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -68,7 +68,7 @@ ARM_M4SFPLIB:=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m+fp/soft
 ARM_GCC_M4SFPLIB:=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/softfp
 ARM_M4HFPLIB:=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m+fp/hard
 ARM_GCC_M4HFPLIB:=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard
-Objects0=$(IntermediateDirectory)/graphic_disp.c$(ObjectSuffix) $(IntermediateDirectory)/game_logic.c$(ObjectSuffix) $(IntermediateDirectory)/startup.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/timer6.c$(ObjectSuffix) $(IntermediateDirectory)/graphic_disp.c$(ObjectSuffix) $(IntermediateDirectory)/game_logic.c$(ObjectSuffix) $(IntermediateDirectory)/startup.c$(ObjectSuffix) 
 
 
 
@@ -105,6 +105,12 @@ PreBuild:
 ##
 ## Objects
 ##
+$(IntermediateDirectory)/timer6.c$(ObjectSuffix): timer6.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/timer6.c$(ObjectSuffix) -MF$(IntermediateDirectory)/timer6.c$(DependSuffix) -MM timer6.c
+	$(CC) $(SourceSwitch) "C:/Chalmers/Year1/LP4/MOP/MOP/Labb5MineSweeper/mineSweeperGD/MineSweeperGD/timer6.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/timer6.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/timer6.c$(PreprocessSuffix): timer6.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/timer6.c$(PreprocessSuffix) timer6.c
+
 $(IntermediateDirectory)/graphic_disp.c$(ObjectSuffix): graphic_disp.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/graphic_disp.c$(ObjectSuffix) -MF$(IntermediateDirectory)/graphic_disp.c$(DependSuffix) -MM graphic_disp.c
 	$(CC) $(SourceSwitch) "C:/Chalmers/Year1/LP4/MOP/MOP/Labb5MineSweeper/mineSweeperGD/MineSweeperGD/graphic_disp.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/graphic_disp.c$(ObjectSuffix) $(IncludePath)

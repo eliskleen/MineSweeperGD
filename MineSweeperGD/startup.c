@@ -8,8 +8,6 @@
 	#define GAME_LOGIC_DEC
 	#include "game_logic_declarations.h"
 #endif
-
-#include "timer6.h"
 #include "keypad.h"
 
 
@@ -33,90 +31,98 @@ __asm__ volatile(" .LTORG\n");
 
 #define    SCB_VTOR            ((volatile unsigned int *)        0xE000ED08)
 void init_app();
+int contains(char * arr, char ch);
+
+
 int main(void)
 {   
+	//Ett ganska stort problem är att ibland fryser spelet, jag kan verkligen inte förstå varför
+	//om jag skulle gissa så är det simulatorn som hänger sig av någon anledning
 	init_app();
 	
 	running = 1;
-	int gameStarted = 0;	
+	int game_started = 0;	
 	struct Player p;
-	char hitCh;
-	char lastKey = 0;
-	int nSameKey = 0;
-
-	//TODO: kolla vad som faktiskt behöver städas upp...
-	//kolla varför den hänger sig ibland, hallå?? vin?!
-	while(running)
+	char hit_ch;
+	char last_key = 0;
+	int n_same_key = 0;
+	int won = 0;
+	
+	
+	while(running)	// loop som körs hela tiden programmet är igånh
 	{
-		reset_game(&gameStarted, &nSameKey, &p);
-		while(!gameover)
+		set_running(1);
+		reset_game(&game_started, &n_same_key, &p);
+		while(!gameover) // loop för varje spel
 		{
-			print_timer(seconds, ticks);
-			checkWin();
-			hitCh = keyb_enhanced();
-			if( hitCh != noKeyReturn)
+			if(game_started)
+				print_timer(seconds, ticks);
+			won = check_win();
+			hit_ch = keyb_enhanced();
+			if( hit_ch != NOKEYRETURN)
 			{
-				if(nSameKey >= sameKeyMax) //ska vi ge samma input igen?
+				if(n_same_key >= SAMEKEYMAX) //ska vi ge samma input igen?
 				{
-					hitCh = lastKey;
-					nSameKey = 0;
+					hit_ch = last_key;
+					n_same_key = SAMEKEYMAX / 3;
 				}
 				
-				if(hitCh != sameKeyReturn)// vi har en ny knapp, spara i lastkey ska inte detta bara göras
-					lastKey = hitCh; // när vi har en move??
-				switch(hitCh)
+				if(hit_ch != SAMEKEYRETURN)// vi har en ny knapp, spara i lastkey 
+				{
+					last_key = hit_ch; 
+					n_same_key = 0;
+				}
+				switch(hit_ch)
 				{
 					case 0xA: // open
-					if(!gameStarted)
+					if(!game_started)
 					{
-						makeFirstOpen(p);
-						gameStarted = 1;
-						toggle_timer_running();
-					}
+						make_first_open(p);
+						game_started = 1;
+						reset_timer(); // eftersom vi använder timer6 för att få randomtal när vi sätter ut bomberna 
+					}				   // måste vi starta om den när vi öppnar
 					else
-						openPos(p.x, p.y);
+						open_pos(p.x, p.y);
 					break;
 					case 0xB: // place flag
-					placeFlag(p);
-					print_flags(Bombs - placed_flaggs);
+					place_flag(&p);
+					print_flags(BOMBS - p.placed_flaggs);
 					break;
 					default:	//move
-					//if(hitCh == 0x2 || hitCh == 0x4 || hitCh == 0x8 || hitCh == 0x6)// TODO: skapa lista och contains typ? samt diagonal movement
-					p = movePlayer(p, hitCh);
+					if(contains(move_keys, hit_ch))
+					{
+						p = move_player(p, hit_ch);
+						print_player(p);
+					}
 					break;
 				}
 			}
-			if(hitCh == noKeyReturn) // ingen knapp nedtryckt, samma irad = 0
-					nSameKey = 0;
-			if(hitCh == sameKeyReturn && (lastKey == 0x2 || lastKey == 0x4 || lastKey == 0x8 || lastKey == 0x6))
-				nSameKey++; //vi har samma knapp ige, och det är en "move" knapp, öka samma irad
+			if(hit_ch == NOKEYRETURN || !contains(move_keys, last_key)) // ingen knapp nedtryckt, samma i rad = 0
+					n_same_key = 0;
+			if(hit_ch == SAMEKEYRETURN && contains(move_keys, last_key))
+				n_same_key++; 											// vi har samma knapp igen, och det är en "move" knapp, öka samma i rad
 		}
-		
+		print_win_loose_msg(won);
 		toggle_timer_running();
 		reset_timer();
+		delay_milli(1000); // detta kan också behöva justeras för den riktiga hårdvaran...
 		running = play_again();
-		placed_flaggs = 0;
+		p.placed_flaggs = 0;
 		gameover = 0;
 	}
+	ascii_gotoxy(1,1);
+	ascii_write_string("Well played! Bye :)           :");
 	return 0;
 }
 
 void init_app(void)
 {
 	init_keypad(&GPIO_D);
-	/*
-	GPIO_D.moder = 0x55000000; //*GPIO_MODER = 0x55000000;
-	GPIO_D.otyper = 0xFFAA0000; // *GPIO_OTYPER = 0xFFAA0000;
-	GPIO_D.pupdr = 0x0F0000; //	*GPIO_PUPDR = 0x0F0000;
-	GPIO_D.odrHigh = 0xF;
-	*/
-	
-	*GPIO_E_MODER = 0x55555555;
-	*SCB_VTOR = REALLOC;
+	*GPIO_E_MODER = 0x55555555; // setup för GD
+	*SCB_VTOR = REALLOC;		
 	graphic_initialize();
 	sysTick_init();
 	timer6_init();
-	toggle_timer_running();
 	ascii_init();
 }
 
@@ -126,15 +132,21 @@ int play_again()
 	char lower[] = "yes -> D, no -> anything";
 	ascii_gotoxy(1,1);
 	ascii_write_string(upper);
-	//ascii_gotoxy(1,2);
-	//ascii_write_string(lower);
 	char hitch = 0xFF;
 	while(1)
 	{
 		hitch = keyb_enhanced();
-		if(hitch != sameKeyReturn && hitch != noKeyReturn)
+		if(hitch != SAMEKEYRETURN && hitch != NOKEYRETURN) // vänta på att man släppt upp efter man vann/förlorade
 			break;
 	}
 	return hitch == 0xD;
 	
+}
+
+int contains(char * arr, char ch)
+{
+	while(*arr != 0)
+		if(*arr++ == ch)
+			return 1;
+	return 0;
 }

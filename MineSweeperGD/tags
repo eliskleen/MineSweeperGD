@@ -1,16 +1,53 @@
-uint32_t	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef unsigned int uint32_t; /;"	typedef	line:1
-uint8_t	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef unsigned char uint8_t; $/;"	typedef	line:2
-tag_gpio	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef volatile struct tag_gpio {$/;"	struct	line:3
-moder	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t moder;$/;"	member	line:4	struct:tag_gpio	access:public
-otyper	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t otyper;$/;"	member	line:5	struct:tag_gpio	access:public
-ospeedr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t ospeedr;$/;"	member	line:6	struct:tag_gpio	access:public
-pupdr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t pupdr;$/;"	member	line:7	struct:tag_gpio	access:public
-idr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t idr;$/;"	member	line:9	union:tag_gpio::__anon1	access:public
-idrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t idrLow;$/;"	member	line:11	struct:tag_gpio::__anon1::__anon2	access:public
-idrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t idrHigh;$/;"	member	line:12	struct:tag_gpio::__anon1::__anon2	access:public
-reserved	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		short reserved;$/;"	member	line:13	struct:tag_gpio::__anon1::__anon2	access:public
-odr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^	uint32_t odr;$/;"	member	line:17	union:tag_gpio::__anon3	access:public
-odrLow	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t odrLow;$/;"	member	line:19	struct:tag_gpio::__anon3::__anon4	access:public
-odrHigh	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		uint8_t odrHigh;$/;"	member	line:20	struct:tag_gpio::__anon3::__anon4	access:public
-reserved2	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^		short reserved2;$/;"	member	line:21	struct:tag_gpio::__anon3::__anon4	access:public
-GPIO	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\gpio.h	/^typedef volatile struct tag_gpio { 	uint32_t moder; 	uint32_t otyper; 	uint32_t ospeedr; 	uint32_t pupdr; 	union { 	uint32_t idr; 	struct { 		uint8_t idrLow; 		uint8_t idrHigh; 		short reserved; 		}; 	}; 	union { 	uint32_t odr; 	struct { 		uint8_t odrLow; 		uint8_t odrHigh; 		short reserved2; 		}; 	}; 	 } GPIO; $/;"	typedef	line:25	typeref:struct:tag_gpio
+GRAPGIC_DISP_DEC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	#define GRAPGIC_DISP_DEC$/;"	macro	line:3
+TIMER6INC	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	#define TIMER6INC$/;"	macro	line:7
+Positions	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^struct Positions $/;"	struct	line:11
+x	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int x,y, number_of_bombs;$/;"	member	line:13	struct:Positions	access:public
+y	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int x,y, number_of_bombs;$/;"	member	line:13	struct:Positions	access:public
+number_of_bombs	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int x,y, number_of_bombs;$/;"	member	line:13	struct:Positions	access:public
+flagged	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int flagged, bomb, opened;$/;"	member	line:14	struct:Positions	access:public
+bomb	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int flagged, bomb, opened;$/;"	member	line:14	struct:Positions	access:public
+opened	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int flagged, bomb, opened;$/;"	member	line:14	struct:Positions	access:public
+position	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^}position;$/;"	variable	line:15	typeref:struct:Positions
+Player	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^struct Player$/;"	struct	line:16
+x	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int x,y;$/;"	member	line:18	struct:Player	access:public
+y	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int x,y;$/;"	member	line:18	struct:Player	access:public
+placed_flaggs	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	int placed_flaggs;$/;"	member	line:19	struct:Player	access:public
+STARTX	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define STARTX 0$/;"	macro	line:21
+STARTY	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define STARTY 0$/;"	macro	line:22
+SIZEX	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define SIZEX 16$/;"	macro	line:23
+SIZEY	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define SIZEY 5$/;"	macro	line:24
+PLAYERCH	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define PLAYERCH '$'$/;"	macro	line:25
+BOMBCH	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define BOMBCH '*'$/;"	macro	line:26
+FLAGCH	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define FLAGCH '^'$/;"	macro	line:27
+BOMBS	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define BOMBS 10$/;"	macro	line:28
+SIMULATED	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^#define SIMULATED$/;"	macro	line:30
+SAMEKEYMAX	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	#define SAMEKEYMAX 20 \/\/denna behöver justeras beroende på hur snabb din dator är...$/;"	macro	line:32
+SAMEKEYMAX	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^	#define SAMEKEYMAX 20*1000 \/\/detta borde ju funka för riktig hårdvara$/;"	macro	line:34
+gotoxy	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void gotoxy(int x, int y);$/;"	prototype	line:37	signature:(int x, int y)	returns:void 
+create_board	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void create_board(struct Positions b[SIZEX][SIZEY]);$/;"	prototype	line:38	signature:(struct Positions b[SIZEX][SIZEY])	returns:void 
+draw_field	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void draw_field();$/;"	prototype	line:39	signature:()	returns:void 
+move_player	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^struct Player move_player(struct Player p, char moveCh);$/;"	prototype	line:40	signature:(struct Player p, char moveCh)	returns:struct Player 
+move_player_diagonal	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^struct Player move_player_diagonal(struct Player p, char moveCh);$/;"	prototype	line:41	signature:(struct Player p, char moveCh)	returns:struct Player 
+print_player	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void print_player(struct Player p);$/;"	prototype	line:42	signature:(struct Player p)	returns:void 
+draw_pos	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void draw_pos(struct Positions p);$/;"	prototype	line:43	signature:(struct Positions p)	returns:void 
+get_new_xy_from_ch	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int * get_new_xy_from_ch(char ch);$/;"	prototype	line:44	signature:(char ch)	returns:int 
+valid_pos	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int valid_pos(int x, int y);$/;"	prototype	line:45	signature:(int x, int y)	returns:int 
+place_bombs	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void place_bombs(struct Player p);$/;"	prototype	line:46	signature:(struct Player p)	returns:void 
+make_first_open	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void make_first_open(struct Player p);$/;"	prototype	line:47	signature:(struct Player p)	returns:void 
+open_pos	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void open_pos(int x, int y);$/;"	prototype	line:48	signature:(int x, int y)	returns:void 
+count_bombs	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int count_bombs(int x, int y);$/;"	prototype	line:49	signature:(int x, int y)	returns:int 
+show_bombs	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void show_bombs();$/;"	prototype	line:50	signature:()	returns:void 
+place_flag	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void place_flag(p);$/;"	prototype	line:51	signature:(p)	returns:void 
+game_over	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void game_over();$/;"	prototype	line:52	signature:()	returns:void 
+check_win	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int check_win();$/;"	prototype	line:53	signature:()	returns:int 
+is_bomb	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int is_bomb(struct Positions pos);$/;"	prototype	line:54	signature:(struct Positions pos)	returns:int 
+is_flag	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int is_flag(struct Positions pos);$/;"	prototype	line:55	signature:(struct Positions pos)	returns:int 
+reset_game	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^void reset_game();$/;"	prototype	line:56	signature:()	returns:void 
+is_bomb_ptr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int (*is_bomb_ptr)(struct Positions);$/;"	variable	line:59
+is_flag_ptr	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int (*is_flag_ptr)(struct Positions);$/;"	variable	line:60
+board	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^struct Positions board[SIZEX][SIZEY];$/;"	variable	line:61	typeref:struct:Positions
+curr_x	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int curr_x;$/;"	variable	line:62
+curr_y	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int curr_y;$/;"	variable	line:63
+running	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int running;$/;"	variable	line:64
+gameover	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^int gameover;$/;"	variable	line:65
+move_keys	C:\Chalmers\Year1\LP4\MOP\MOP\Labb5MineSweeper\mineSweeperGD\MineSweeperGD\game_logic_declarations.h	/^char move_keys[8];/;"	variable	line:67

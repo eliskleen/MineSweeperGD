@@ -1,1 +1,1 @@
-Debug/graphic_disp.c.o Debug/game_logic.c.o Debug/startup.c.o   
+Debug/timer6.c.o Debug/graphic_disp.c.o Debug/game_logic.c.o Debug/startup.c.o   

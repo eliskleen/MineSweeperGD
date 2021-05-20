@@ -1,11 +1,9 @@
-
-
 #define playerCh '$'
 #define bombCh '*'
 #define flagCh '^'
 //for ascii
 #define FLAGSOFFSET 12
-#define TIMEROFFSET 8
+#define TIMEROFFSET 7
 
 
 
@@ -36,18 +34,20 @@ void delay_micro(unsigned int us);
 void ascii_write_controller(char cmd);
 void ascii_write_command(char cmd);
 void ascii_write_data(char cmd);
+void ascii_gotoxy(int x, int y);
 unsigned char ascii_read_controller();
 unsigned char ascii_read_status();
 unsigned char ascii_read_data();
 void ascii_command(char cmd);
 void ascii_write_char(char ch);
-
+void print_win_loose_msg(int won);
 void ascii_write_string(char * p);
 
 
 
 void init_disp();
-void printToGD(int x, int y,char ch);
+void print_to_gd(int x, int y,char ch);
+//void print_num_at(int x, int y, DISPCHAR ch);
 void print_start_text_ascii();
 void print_flags(int f);
 void print_timer(int secs, int tenths);

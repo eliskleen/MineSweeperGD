@@ -1,50 +1,67 @@
 
+#ifndef GRAPGIC_DISP_DEC
+	#define GRAPGIC_DISP_DEC
+	#include "graphic_disp_declarations.h"
+#endif
+#ifndef TIMER6INC
+	#define TIMER6INC
+	#include "timer6_declarations.h"
+#endif
+
 struct Positions 
 {
-	int x,y, numberOfBombs;
+	int x,y, number_of_bombs;
 	int flagged, bomb, opened;
 }position;
 struct Player
 {
 	int x,y;
-	int placedFlaggs;
+	int placed_flaggs;
 };
-#define startX 0
-#define startY 0
-#define sizeX 14
-#define sizeY 5
-#define playerCh '$'
-#define bombCh '*'
-#define flagCh '^'
-#define Bombs 10
-#define sameKeyMax 30
+#define STARTX 0
+#define STARTY 0
+#define SIZEX 16
+#define SIZEY 5
+#define PLAYERCH '$'
+#define BOMBCH '*'
+#define FLAGCH '^'
+#define BOMBS 10
 
+#define SIMULATED
+#ifdef SIMULATED
+	#define SAMEKEYMAX 20 //denna behöver justeras beroende på hur snabb din dator är...
+#else
+	#define SAMEKEYMAX 20*1000 //detta borde ju funka för riktig hårdvara
+#endif
 
 void gotoxy(int x, int y);
-void createBoard(struct Positions b[sizeX][sizeY]);
-void drawField();
-struct Player movePlayer(struct Player p, char moveCh);
-void drawPos(struct Positions p);
-int * getNewXYFromCh(char ch);
-int validPos(int x, int y);
-void placeBombs(struct Player p);
-void makeFirstOpen(struct Player p);
-void openPos(int x, int y);
-int countBombs(int x, int y);
-void showBombs();
-void placeFlag(p);
-void gameOver();
-void checkWin();
-int isBomb(struct Positions pos);
-int isFlag(struct Positions pos);
+void create_board(struct Positions b[SIZEX][SIZEY]);
+void draw_field();
+struct Player move_player(struct Player p, char moveCh);
+struct Player move_player_diagonal(struct Player p, char moveCh);
+void print_player(struct Player p);
+void draw_pos(struct Positions p);
+int * get_new_xy_from_ch(char ch);
+int valid_pos(int x, int y);
+void place_bombs(struct Player p);
+void make_first_open(struct Player p);
+void open_pos(int x, int y);
+int count_bombs(int x, int y);
+void show_bombs();
+void place_flag(p);
+void game_over();
+int check_win();
+int is_bomb(struct Positions pos);
+int is_flag(struct Positions pos);
 void reset_game();
 
 
-int (*isBombPtr)(struct Positions);
-int (*isFlagPtr)(struct Positions);
-struct Positions board[sizeX][sizeY];
-int currX;
-int currY;
+int (*is_bomb_ptr)(struct Positions);
+int (*is_flag_ptr)(struct Positions);
+struct Positions board[SIZEX][SIZEY];
+int curr_x;
+int curr_y;
 int running;
 int gameover;
-int placed_flaggs;
+//int placed_flaggs;
+char move_keys[8];

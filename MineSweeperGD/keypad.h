@@ -1,17 +1,17 @@
 #include "gpio.h"
 
-#define sameKeyReturn 0xFE
-#define noKeyReturn   0xFF 
+#define SAMEKEYRETURN 0xFE
+#define NOKEYRETURN   0xFF 
 
-#define waitState 1
-#define initState 0
+#define WAITSTATE 1
+#define INITSTATE 0
 
 unsigned char readKey(void);
 unsigned char keyb_enhanced(void);
 void activateRow(int row);
 int readColumn(void);
 
-unsigned char current_state = initState;
+unsigned char current_state = INITSTATE;
 
 static volatile GPIO * port;
 
@@ -37,23 +37,23 @@ unsigned char readKey(void)
 		}
 	}
 	activateRow(0);
-	return noKeyReturn;
+	return NOKEYRETURN;
 }
 
 unsigned char keyb_enhanced(void)
 {
-	if(current_state == waitState)
+	if(current_state == WAITSTATE)
 	{
 		activateRow(5);
 		if(port->idrHigh == 0)//if(*GPIO_IDR_HIGH == 0)
-		{ current_state = initState; }
-		return sameKeyReturn;
+		{ current_state = INITSTATE; }
+		return SAMEKEYRETURN;
 	}
-	if(current_state == initState)
+	if(current_state == INITSTATE)
 	{
 		unsigned char c = readKey();
-		if(c != noKeyReturn)
-			current_state = waitState;
+		if(c != NOKEYRETURN)
+			current_state = WAITSTATE;
 		return c;
 	}
 
