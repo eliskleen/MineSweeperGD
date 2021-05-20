@@ -15,6 +15,8 @@ Controlls:
  
  6 = right
  
+ 9,7,1,3 = diagonal
+ 
  8 = down
  
  A = open
